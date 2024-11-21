@@ -296,9 +296,9 @@ class LinuxGPUExtensionBuilder(MujocoExtensionBuilder):
     def _build_impl(self):
         so_file_path = super()._build_impl()
         #fix_shared_library(so_file_path, 'libOpenGL.so', f'{os.environ["LD_LIBRARY_PATH"]}/libOpenGL.so.0')
-        #fix_shared_library(so_file_path, 'libOpenGL.so', '/opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210/bin/libOpenGL.so.0')
+        fix_shared_library(so_file_path, 'libGL.so.1.so', '/opt/conda/lib/libGL.so.1')
         #fix_shared_library(so_file_path, 'libEGL.so', f'{os.environ["LD_LIBRARY_PATH"]}/libEGL.so.1')
-        #fix_shared_library(so_file_path, 'libEGL.so', '/opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210/bin/lib.so.1')
+        fix_shared_library(so_file_path, 'libEGL.so', '/opt/conda/lib/libEGL.so.1')
         
         #fix_shared_library(so_file_path, 'libmujoco210.so', f'{os.environ["LD_LIBRARY_PATH"]}/libmujoco210.so')
         #fix_shared_library(so_file_path, 'libglewegl.so', f'{os.environ["LD_LIBRARY_PATH"]}/libglewegl.so')
