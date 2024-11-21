@@ -42,6 +42,9 @@ def get_nvidia_lib_dir():
 
 
 def load_cython_ext(mujoco_path):
+    print(f"The original mujoco_path: {mujoco_path}")
+    mujoco_path = "/opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210"
+    print(f"New mujoco_path: {mujoco_path}")
     """
     Loads the cymj Cython extension. This is safe to be called from
     multiple processes running on the same machine.
@@ -83,6 +86,7 @@ The easy solution is to `import mujoco_py` _before_ `import glfw`.
         raise RuntimeError("Unsupported platform %s" % sys.platform)
 
     builder = Builder(mujoco_path)
+    # /opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210/
     cext_so_path = builder.get_so_file_path()
 
     lockpath = os.path.join(os.path.dirname(cext_so_path), 'mujocopy-buildlock')
