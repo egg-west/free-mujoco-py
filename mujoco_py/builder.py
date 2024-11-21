@@ -277,8 +277,10 @@ class LinuxCPUExtensionBuilder(MujocoExtensionBuilder):
     def _build_impl(self):
         so_file_path = super()._build_impl()
         # Removes absolute paths to libraries. Allows for dynamic loading.
-        fix_shared_library(so_file_path, 'libmujoco210.so', f'{os.environ["LD_LIBRARY_PATH"]}/libmujoco210.so')
-        fix_shared_library(so_file_path, 'libglewosmesa.so', f'{os.environ["LD_LIBRARY_PATH"]}/libglewosmesa.so')
+        #fix_shared_library(so_file_path, 'libmujoco210.so', f'{os.environ["LD_LIBRARY_PATH"]}/libmujoco210.so')
+        #fix_shared_library(so_file_path, 'libglewosmesa.so', f'{os.environ["LD_LIBRARY_PATH"]}/libglewosmesa.so')
+        fix_shared_library(so_file_path, 'libmujoco210.so', '/opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210/bin/libmujoco210.so')
+        fix_shared_library(so_file_path, 'libglewegl.so', '/opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210/bin/libglewegl.so')
         return so_file_path
 
 
@@ -296,8 +298,10 @@ class LinuxGPUExtensionBuilder(MujocoExtensionBuilder):
         so_file_path = super()._build_impl()
         fix_shared_library(so_file_path, 'libOpenGL.so', f'{os.environ["LD_LIBRARY_PATH"]}/libOpenGL.so.0')
         fix_shared_library(so_file_path, 'libEGL.so', f'{os.environ["LD_LIBRARY_PATH"]}/libEGL.so.1')
-        fix_shared_library(so_file_path, 'libmujoco210.so', f'{os.environ["LD_LIBRARY_PATH"]}/libmujoco210.so')
-        fix_shared_library(so_file_path, 'libglewegl.so', f'{os.environ["LD_LIBRARY_PATH"]}/libglewegl.so')
+        #fix_shared_library(so_file_path, 'libmujoco210.so', f'{os.environ["LD_LIBRARY_PATH"]}/libmujoco210.so')
+        #fix_shared_library(so_file_path, 'libglewegl.so', f'{os.environ["LD_LIBRARY_PATH"]}/libglewegl.so')
+        fix_shared_library(so_file_path, 'libmujoco210.so', '/opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210/bin/libmujoco210.so')
+        fix_shared_library(so_file_path, 'libglewegl.so', '/opt/conda/lib/python3.10/site-packages/mujoco_py/binaries/linux/mujoco210/bin/libglewegl.so')
         return so_file_path
 
 
